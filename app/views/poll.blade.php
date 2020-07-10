@@ -316,7 +316,7 @@
 
       $("#btnNext").click(function(e)
      {
-       $("#is_next").html('Please Wait...');
+       $("#btnNext").html('Please Wait...');
        $("#is_next").val(1)
         $("#is_vote").val(1)
        // $("form[name='register']").attr('action',$(this).attr('data-url'))
@@ -326,7 +326,7 @@
       //btn next dump for with login 
      $("#btnNextdump").click(function(e)
      {
-        $("#is_next").html('Please Wait...');
+        $("#btnNextdump").html('Please Wait...');
        $("#is_next").val(1)
        // $("form[name='register']").attr('action',$(this).attr('data-url'))
        // $("form[name='register']").submit();
