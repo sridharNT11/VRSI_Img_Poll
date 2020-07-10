@@ -30,7 +30,19 @@ class PollController extends BaseController {
 	        Session::forget('session_id');
 	    }
 	    
-		return View::make('index');
+	    $session = Sessions::getSession();
+		if(isset($session))
+		{
+			return View::make('index');
+		}
+        else
+        {
+			// return $this->ClosedPage();
+			Session::flash('msg', AppMessage::$EndSession);
+			return Redirect::to('msg');
+//       			return $this->msg();
+        }
+
 	}
 
 	public function getPoll($image_poll_id=null)
