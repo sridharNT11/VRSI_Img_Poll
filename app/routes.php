@@ -17,6 +17,7 @@ Route::get('/tests', function()
 });         
 
 
+Route::get('logout','UserController@Logout'); 
 
 
 
@@ -32,7 +33,7 @@ Route::get('/tankyou','PollController@thankyou');
 Route::get('/msg','PollController@msg'); 
 
 
-Route::get('/{session_id?}/{key?}','PollController@index'); 
+
 
 
 //API
@@ -41,10 +42,10 @@ Route::any('/api/user/verify_otp','UserController@VerifyOTP');
 
 
 
-Route::get('logout','UserController@Logout'); 
 
+//Defualt url
 
-
+Route::get('/{session_id?}/{key?}','PollController@index'); 
 
 
 
