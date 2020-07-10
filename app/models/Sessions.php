@@ -27,7 +27,8 @@ class Sessions extends Eloquent {
             }
             else
             {
-                $session = Sessions::where('session_active',1)->first();
+                //$session = Sessions::where('session_active',1)->first();
+                 $session = Sessions::where('session_start','<=', date('Y-m-d H:i:s'))->where('session_end','>=', date('Y-m-d H:i:s'))->where('session_active','=',1)->first();
             }
                
 
