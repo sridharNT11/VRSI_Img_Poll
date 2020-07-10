@@ -117,6 +117,7 @@ class UserController extends BaseController {
 
      public function Logout()
      {
+     	
      	Auth::logout();
         return Redirect::to('/');
      }
