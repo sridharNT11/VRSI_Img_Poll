@@ -116,12 +116,19 @@
         <form class="form-group">
             <!-- <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login in</h1> -->
 
+            <div id="alert-warning" class="alert alert-warning" role="alert">
+              Polling can be done only by VRSI members.  If you are a VRSI member, please enter your registered mobile number here to get an OTP.
+            </div>
+
             <div id="alert-success"  class="alert alert-success" role="alert" style="display: none">
               
             </div>
             <div id="alert-danger" class="alert alert-danger" role="alert" style="display: none">
               
             </div>
+
+
+            
 
             <div class="input-group form-group">
               <input type="text" id="mobile" class="form-control " placeholder="Mobile Number" required="" autofocus="">
@@ -132,7 +139,8 @@
             <button class="btn btn-success btn-block" id="btnlogin" type="button">Login in</button>
             <hr>
             <!-- <p>Don't have an account!</p>  -->
-            <a href="https://live.vrsi.in/signup" target="_blank" class="btn btn-primary btn-block" id="btn-signup">Sign up New Account</a>
+            <p> If you do not get an OTP to login,  please write to <a href="mailto:support@VRSI.in">support@VRSI.in</a> for assistance.</p>
+           <!--  <a href="https://live.vrsi.in/signup" target="_blank" class="btn btn-primary btn-block" id="btn-signup">Sign up New Account</a> -->
         </form>
            
       </div>
