@@ -291,6 +291,11 @@
      var rate = "{{ $rate }}";
      if(rate>0)
      {
+        for (ix = 1; ix <= rate; ++ix) {
+          $("#rating-star-"+ix).toggleClass('btn-warning');
+          $("#rating-star-"+ix).toggleClass('btn-default');
+          }
+
         $("#btnNext").attr('disabled',false);  
      }
      else
