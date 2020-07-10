@@ -1,0 +1,118 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+body {
+	padding: 0;
+	margin: 0;
+	background: #ffffff;
+	color: #000000;
+	/*font-size: 20px;*/
+	line-height: 120%;
+	font-family: 'barlowregular', sans-serif;
+}
+.home {
+	background: #BF360C;
+}
+header {
+    /*background: #404040;*/
+    /*padding: 10px 0;*/
+}
+.title {
+	padding: 30px 20px;
+}
+.title h3 {
+	color: #fff;
+	font-family: 'barlowregular';
+}
+.content{background: #ffffff; }
+h1, h2, h3, h4, h5 {color: #039;}
+
+/* Form */
+
+/*.btn-primary {padding:5px 10px; background:#FFDF00; color:#000; font-size:24px; font-weight:bold; border:0;}
+.btn-primary:hover {padding:5px 10px; background:#333333; color:#fff; font-size:24px; font-weight:bold; border:0;}
+*/
+.list-group-item:hover{background: #FFE5B5; text-decoration: none; color:#fff;}
+.list-group-item-heading {margin-bottom: 0;}
+.selected {background: #FFE5B5; text-decoration: none; color:#fff;}
+.leftbox{background: #404040; height: 400vh; padding-top: 15%;}
+/*.rightbox{padding:15% 5% 0 5%;}*/
+/*.rightbox ol li{margin-left: 15px; font-size: 20px; text-align: left; line-height: 175%;}*/
+.rightbox{padding:5% 5% 0 5%;}
+.rightbox ol li{margin-left: 15px; font-size: 16px; text-align: left; line-height: 175%;}
+.rightbox p{color:#fff;}
+
+.error,.red
+{
+	color: red;
+}
+
+
+div.disabled
+{
+  pointer-events: none;
+
+  /* for "disabled" effect */
+  opacity: 0.5;
+  /*background: #CCC;*/
+}
+#optionsfour
+{
+   color:white;
+   font-size: 30px;
+   padding: 2px;
+}
+#options_row
+{
+background-color: #111E6C;
+
+}
+/*td.disabled{
+  display:none;
+  font:none;
+}*/
+#btnSave
+{
+	font-size: 25px;
+}
+
+
+.list-group-item {    
+	font-size: 40px;
+    background-color: #111E6C;
+    color: #fff;
+    font-family: 'barlowregular', sans-serif;
+}
+
+.selected {background: red; text-decoration: none; color:#fff;}
+
+
+.h5, h5 {
+    /* font-size: 1.25rem; */
+}
+
+.bg-black
+{
+    background:#000;
+}
+
+/*#a_section_winners*/
+/*{*/
+/*    display:none;*/
+/*}*/
+
+#subcontent
+{
+    font-size:25px;
+}
+
+
+
+
+

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Brain Teaser</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery-3.3.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <form id="reg" name="register" action="{{ url('user_info/'.$user->user_id) }}" method="post">
+	<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-sm-12 brand"> <img src="images/logo.png" alt="Logo" height="100"> </div>
+      <div class="col-lg-6 col-sm-12 caption">
+        <h2 class="text-white text-right">The ophthaquiz for ophthawhiz</h2>
+		  <h5 class="text-white text-right">An Edutainment series by Sarakshi Netralaya!</h5>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container content">
+	<div class="row align-items-center">
+	<div class="col-6 offset-md-3">
+			<h4 class="mb-3">Please enter your details</h4>
+    <form>
+		  <div class="form-group">
+    <label for="inputFullName">Full Name</label>
+    <input type="text" class="form-control" id="inputFullName" >
+  </div>
+  <div class="form-group">
+    <label for="inputEmail">Email</label>
+    <input type="email" class="form-control" id="inputEmail">
+  </div>
+		<div class="form-group">
+    <label for="inputMobile">Mobile</label>
+    <input type="text" class="form-control" id="inputMobile">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">State</label>
+      <input type="text" class="form-control" id="inputState">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary float-right">NEXT</button>
+</form>
+    </div>
+		</div>
+</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,88 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@font-face {
+	font-family: 'barlowregular';
+	src: url('Barlow-Regular-webfont.eot');
+	src: url('Barlow-Regular-webfont.eot?#iefix') format('embedded-opentype'),  url('Barlow-Regular-webfont.woff2') format('woff2'),  url('Barlow-Regular-webfont.woff') format('woff'),  url('Barlow-Regular-webfont.ttf') format('truetype'),  url('Barlow-Regular-webfont.svg#barlowregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'barlowsemibold';
+	src: url('Barlow-SemiBold-webfont.eot');
+	src: url('Barlow-SemiBold-webfont.eot?#iefix') format('embedded-opentype'),  url('Barlow-SemiBold-webfont.woff2') format('woff2'),  url('Barlow-SemiBold-webfont.woff') format('woff'),  url('Barlow-SemiBold-webfont.ttf') format('truetype'),  url('Barlow-SemiBold-webfont.svg#barlowsemibold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'barlowbold';
+	src: url('Barlow-Bold-webfont.eot');
+	src: url('Barlow-Bold-webfont.eot?#iefix') format('embedded-opentype'),  url('Barlow-Bold-webfont.woff2') format('woff2'),  url('Barlow-Bold-webfont.woff') format('woff'),  url('Barlow-Bold-webfont.ttf') format('truetype'),  url('Barlow-Bold-webfont.svg#barlowbold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+body {
+	padding: 0;
+	margin: 0;
+	background: #ffffff;
+	color: white;
+	font-size: 16px;
+	line-height: 120%;
+	font-family: 'barlowregular', sans-serif;
+}
+.home {
+	background: cornsilk;
+}
+header {
+    background: #000033;
+    padding: 10px 0;
+}
+.title {
+	padding: 30px 20px;
+}
+.title h3 {
+	color: #fff;
+	font-family: 'barlowregular';
+}
+.content{padding: 30px; background: #ffffff; }
+h1, h2, h3, h4, h5 {color: #039;}
+
+/* Form */
+
+.btn-primary {padding:5px 10px; background:#FFDF00; color:#000; font-size:24px; font-weight:bold; border:0;}
+.btn-primary:hover {padding:5px 10px; background:#333333; color:#fff; font-size:24px; font-weight:bold; border:0;}
+.list-group-item:hover{background: #FFE5B5; text-decoration: none; color:#fff;}
+.list-group-item-heading {margin-bottom: 0;}
+.selected {background: #FFE5B5; text-decoration: none; color:#fff;}
+.leftbox{background: #000033; height: 400vh; padding-top: 5%;}
+/*.rightbox{padding:15% 5% 0 5%;}*/
+/*.rightbox ol li{margin-left: 15px; font-size: 20px; text-align: left; line-height: 175%;}*/
+.rightbox{padding:5% 5% 0 5%;}
+.rightbox ol li{margin-left: 15px; font-size: 16px; text-align: left; line-height: 175%; color:#003399;}
+.rightbox p{color:#003399;}
+
+@media (max-width: 576px) { 
+.brand, .caption {text-align: center;}
+.caption h2, .caption h5{text-align: center !important;}
+}
+
+.error,.red
+{
+	color: red;
+}
+
+
+div.disabled
+{
+  pointer-events: none;
+
+  /* for "disabled" effect */
+  opacity: 0.5;
+  /*background: #CCC;*/
+}

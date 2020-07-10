@@ -1,0 +1,23 @@
+{
+    "name": "lakshmaji/payubiz",
+    "description": "payubiz",
+    "keywords": [
+        "Payubiz", "Laravel", "composer", "Payment Gateway", "Integrations"
+    ],
+    "require": {
+        "symfony/http-foundation": "~2.6|~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lakshmaji\\PayUbiz\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lakshmaji",
+            "email": "lakshmaji9@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
