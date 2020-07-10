@@ -63,7 +63,8 @@ class PollController extends BaseController {
 
 			$img_count = ImagePoll::where('session_id',$session->session_id)->count();
 
-			// $quiz_options=QuizOptions::where('quiz_id',$quiz->quiz_id)->get();
+		
+			
 			if(Auth::check())
 			{
 				$user_rate = ImagePollUser::where('user_id',Auth::User()->user_id)->where('image_poll_id',$image_poll_id)
@@ -153,7 +154,7 @@ class PollController extends BaseController {
 					{
 						if(Auth::check())
 						{
-							Session::flash('msg', "Thank you for your vote");
+							Session::flash('msg', "THANK YOU FOR BEING A PART OF THE VRSI IMAGE COMPETITION");
 							return Redirect::to('/tankyou');		
 						}
 						else
