@@ -55,7 +55,15 @@ class PollController extends BaseController {
 
 			if($image_poll_id==null)
 			{
-				$image_poll=ImagePoll::orderBy('order_no')->where('session_id',$session->session_id)->first();					
+
+				// $image_poll=ImagePoll::orderBy('order_no')->where('session_id',$session->session_id)->first();				
+
+				$image_polls =  DB::select('select i.* from image_poll i
+						left join image_poll_users u on u.image_poll_id = i.image_poll_id and u.user_id = 781
+						where i.session_id =1 
+						order by u.user_id and i.order_no limit 1');		
+
+				$image_poll = $image_polls[0];
 				$image_poll_id= $image_poll->image_poll_id;
 			}
 			else{
@@ -166,8 +174,23 @@ class PollController extends BaseController {
 					{
 						if(Auth::check())
 						{
-							Session::flash('msg', "THANK YOU FOR BEING A PART OF THE VRSI IMAGE COMPETITION");
-							return Redirect::to('/tankyou');		
+
+							$img_count = ImagePoll::where('session_id',$session->session_id)->count();
+							$ser_vote_count = ImagePollUser::where('user_id',Auth::User()->user_id)->where('session_id',$session->session_id)->count();
+
+							if($img_count == $ser_vote_count)
+							{
+
+								Session::flash('msg', "THANK YOU FOR BEING A PART OF THE VRSI IMAGE COMPETITION");
+								return Redirect::to('/tankyou');		
+
+							}
+							else
+							{
+									return Redirect::to('/poll');	
+							}
+
+							
 						}
 						else
 						{
