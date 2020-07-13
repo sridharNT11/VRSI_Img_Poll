@@ -55,15 +55,19 @@ class PollController extends BaseController {
 
 			if($image_poll_id==null)
 			{
+				if(Auth::check())
+				{
+						$image_polls =  DB::select('select i.* from image_poll i
+							left join image_poll_users u on u.image_poll_id = i.image_poll_id and u.user_id = '.Auth::User()->user_id.'  where i.session_id ='. $session->session_id .'
+							order by u.user_id and i.order_no limit 1');		
+						$image_poll = $image_polls[0];
+				}
+				else
+				{
+						$image_poll=ImagePoll::orderBy('order_no')->where('session_id',$session->session_id)->first();				
+				}
 
-				// $image_poll=ImagePoll::orderBy('order_no')->where('session_id',$session->session_id)->first();				
-
-				$image_polls =  DB::select('select i.* from image_poll i
-						left join image_poll_users u on u.image_poll_id = i.image_poll_id and u.user_id = 781
-						where i.session_id =1 
-						order by u.user_id and i.order_no limit 1');		
-
-				$image_poll = $image_polls[0];
+				
 				$image_poll_id= $image_poll->image_poll_id;
 			}
 			else{
