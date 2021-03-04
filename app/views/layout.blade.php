@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>VRSI</title>
+<title>VRSI - POLL ON RETINAL IMAGES</title>
 
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 

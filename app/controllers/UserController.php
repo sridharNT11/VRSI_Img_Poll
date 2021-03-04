@@ -35,7 +35,7 @@ class UserController extends BaseController {
                 $datetime = new Datetime;
                 $user->otp_expired_at =$datetime->modify("+10 minutes"); 
                 $operationStatus = $user->save();
-                $msg  ="An SMS with OTP has been sent to your mobile. It might take upto a minute to reach you.";
+                $msg  ="An SMS with OTP has been sent to your mobile. It might take upto a minute to reach you. The OTP is valid for 10 mins.";
                 $status="success";
 
             }

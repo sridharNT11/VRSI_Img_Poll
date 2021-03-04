@@ -31,6 +31,7 @@ class PollController extends BaseController {
 	    }
 	    
 	    $session = Sessions::getSession();
+	   
 		if(isset($session))
 		{
 			return View::make('index');

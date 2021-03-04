@@ -21,7 +21,7 @@
       <div class="row">
          <div class="col-12 text-center">
           <div class="w-100 bg-black">
-            <img src="{{$image_poll->image_url }}" class="img-fluid mt-3 mb-3" style="height: 300px" alt=""> 
+            <img src="{{$image_poll->image_url }}" class="img-fluid mt-3 mb-3" style="/*height: 300px*/" alt=""> 
           </div>
          </div>
       </div>
@@ -107,7 +107,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Login in</h4>
+        <h4 class="modal-title">Login</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -136,9 +136,9 @@
             </div>
             <input type="text" id="otp" class="form-control form-group" placeholder="OTP" required="">
             
-            <button class="btn btn-success btn-block" id="btnlogin" type="button">Login in</button>
+            <button class="btn btn-success btn-block" id="btnlogin" type="button">Login</button>
             <hr>
-            <!-- <p>Don't have an account!</p>  -->
+            <!--<p>The OTP is valid for 10 mins.</p>-->
             <p> If you do not get an OTP to login,  please write to <a href="mailto:support@VRSI.in">support@VRSI.in</a> for assistance.</p>
            <!--  <a href="https://live.vrsi.in/signup" target="_blank" class="btn btn-primary btn-block" id="btn-signup">Sign up New Account</a> -->
         </form>
