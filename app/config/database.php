@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'mysqlLocal',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -52,12 +52,23 @@ return array(
 			'prefix'   => '',
 		),
 
-		'mysql' => array(
+		'mysqlLive' => array(
 			'driver'    => 'mysql',
 			'host'      => '72.52.161.232',
 			'database'  => 'vrsi_live',
 			'username'  => 'vrsi_live',
 			'password'  => 'Cuxv1[QpMWWh',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+
+		'mysqlLocal' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'vrsi_live',
+			'username'  => 'root',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

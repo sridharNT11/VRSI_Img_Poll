@@ -5,7 +5,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class ImagePollUser extends Eloquent {
+class ImagePollUserRate extends Eloquent {
 
 	
 
@@ -14,8 +14,8 @@ class ImagePollUser extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'image_poll_users';
-	protected $primaryKey='ipu_id';
+	protected $table = 'image_poll_user_rate';
+	protected $primaryKey='ipur_id';
 
 
 

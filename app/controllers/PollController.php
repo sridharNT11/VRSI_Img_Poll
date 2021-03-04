@@ -59,9 +59,10 @@ class PollController extends BaseController {
 				if(Auth::check())
 				{
 						$image_polls =  DB::select('select i.* from image_poll i
-							left join image_poll_users u on u.image_poll_id = i.image_poll_id and u.user_id = '.Auth::User()->user_id.'  where i.session_id ='. $session->session_id .'
-							order by u.user_id and i.order_no limit 1');		
+							left join image_poll_user_rate u on u.image_poll_id = i.image_poll_id and u.user_id = '.Auth::User()->user_id.'  where i.session_id ='. $session->session_id .'
+							order by u.user_id ,i.order_no limit 1');		
 						$image_poll = $image_polls[0];
+
 				}
 				else
 				{
@@ -92,7 +93,7 @@ class PollController extends BaseController {
 			
 			if(Auth::check())
 			{
-				$user_rate = ImagePollUser::where('user_id',Auth::User()->user_id)->where('image_poll_id',$image_poll_id)
+				$user_rate = ImagePollUserRate::where('user_id',Auth::User()->user_id)->where('image_poll_id',$image_poll_id)
 				->first();	
 			}
 
@@ -129,11 +130,11 @@ class PollController extends BaseController {
 				{
 					if($selected_rating>0)
 					{
-						$vote			    = ImagePollUser::where('user_id',Auth::User()->user_id)->where('image_poll_id',$image_poll_id)->first();
+						$vote			    = ImagePollUserRate::where('user_id',Auth::User()->user_id)->where('image_poll_id',$image_poll_id)->first();
 
 						if(!isset($vote))
 						{
-							$vote 				= new ImagePollUser();
+							$vote 				= new ImagePollUserRate();
 							$vote->user_id 		= Auth::User()->user_id;
 							$vote->rate 		= $selected_rating;
 							$vote->session_id   = $session->session_id;
@@ -181,7 +182,7 @@ class PollController extends BaseController {
 						{
 
 							$img_count = ImagePoll::where('session_id',$session->session_id)->count();
-							$ser_vote_count = ImagePollUser::where('user_id',Auth::User()->user_id)->where('session_id',$session->session_id)->count();
+							$ser_vote_count = ImagePollUserRate::where('user_id',Auth::User()->user_id)->where('session_id',$session->session_id)->count();
 
 							if($img_count == $ser_vote_count)
 							{
@@ -288,7 +289,7 @@ class PollController extends BaseController {
 	// 			// $quiz_options=QuizOptions::where('quiz_id',$quiz->quiz_id)->get();
 	// 			if(Auth::check())
 	// 			{
-	// 				$user_rate = ImagePollUser::where('user_id',Auth::User()->user_id)->where('image_poll_id',$image_poll_id)
+	// 				$user_rate = ImagePollUserRate::where('user_id',Auth::User()->user_id)->where('image_poll_id',$image_poll_id)
 	// 				->first();	
 	// 			}
 

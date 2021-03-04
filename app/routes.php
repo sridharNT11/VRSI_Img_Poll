@@ -13,7 +13,7 @@
 Route::get('/tests', function()
 {
  		$data =  DB::select('select * from image_poll i
-						left join image_poll_users u on u.image_poll_id = i.image_poll_id and u.user_id = 781
+						left join image_poll_user_rate u on u.image_poll_id = i.image_poll_id and u.user_id = 781
 						where i.session_id =1 
 						order by u.user_id and i.order_no limit 1');	
  		var_dump($data);
