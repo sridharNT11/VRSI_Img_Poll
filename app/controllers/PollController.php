@@ -49,11 +49,18 @@ class PollController extends BaseController {
 	public function getPoll($image_poll_id=null)
 	{
 
+		if(Auth::check())
+		{
+			$user = User::find(Auth::User()->user_id);
+			if($user->profile_updated_at==null)
+			{
+				return Redirect::to('profile');
+			}
+		}
 
 		$session = Sessions::getSession();
 		if(isset($session))
 		{
-
 			if($image_poll_id==null)
 			{
 				if(Auth::check())
@@ -188,7 +195,7 @@ class PollController extends BaseController {
 							{
 
 								Session::flash('msg', "THANK YOU FOR BEING A PART OF THE VRSI IMAGE COMPETITION");
-								return Redirect::to('/tankyou');		
+								return Redirect::to('/thankyou');		
 
 							}
 							else

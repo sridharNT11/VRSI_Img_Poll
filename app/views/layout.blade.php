@@ -46,7 +46,7 @@
 @if(Auth::check())
   <div class="row">
     <div class="col-lg-12 col-sm-12 text-right">
-      <h5 class="pr-3">{{ Auth::user()->prefix }} {{ Auth::user()->last_name }} {{ Auth::user()->first_name }} <a href="{{ url('logout') }}">Logout</a></h5>
+      <h5 class="pr-3">{{ Auth::user()->prefix }} {{ Auth::user()->full_name }} | <a href="{{ url('profile') }}">Profile</a> | <a href="{{ url('logout') }}">Logout</a></h5>
     </div>
   </div>
   @endif

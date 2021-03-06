@@ -11,6 +11,9 @@ class CustomClass
     public static $Sender = 'VRSIRG';
     public static $Authkey = '175588A8eIxMRYsC59c24ee7';
 
+    public static $Mandrill_Key = '5oh0BNzYVNAoqEJH7EBqyw';
+    
+
 }
 
 

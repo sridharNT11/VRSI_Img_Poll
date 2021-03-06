@@ -80,9 +80,12 @@
       @else
         <div class="row {{ $qo_id >0 ?'disabled':'' }}">
            <div class="col-md-12 text-center mb-3">
-           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+            <a href="{{  url('/login') }}" class="btn btn-danger">
               Login to Poll
-           </button>
+           </a>
+           <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+              Login to Poll
+           </button> -->
            </div>
         </div>
         <div class="row">
@@ -114,29 +117,40 @@
       <!-- Modal body -->
       <div class="modal-body">
         <form class="form-group">
-            <!-- <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login in</h1> -->
-
-            <div id="alert-warning" class="alert alert-warning" role="alert">
-              Polling can be done only by VRSI members.  If you are a VRSI member, please enter your registered mobile number here to get an OTP.
-            </div>
-
-            <div id="alert-success"  class="alert alert-success" role="alert" style="display: none">
+          <input type="hidden" name="hdnuserId" id="hdnuserId" value="0">
+           <div id="alert-success"  class="alert alert-success" role="alert" style="display: none">
               
             </div>
             <div id="alert-danger" class="alert alert-danger" role="alert" style="display: none">
               
             </div>
-
-
-            
-
-            <div class="input-group form-group">
-              <input type="text" id="mobile" class="form-control " placeholder="Mobile Number" required="" autofocus="">
-              <button id="btnsendotp" class="btn btn-success" type="button">Send OTP</button>
+            <!-- <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login in</h1> -->
+<div id="Login">
+            <div id="alert-warning" class="alert alert-warning" role="alert">
+              Please enter your email id or mobile number here to get an OTP.
             </div>
-            <input type="text" id="otp" class="form-control form-group" placeholder="OTP" required="">
+
+            <div class="form-group">
+              <label>Email Id:</label>
+              <input type="text" id="email" class="form-control " placeholder="Email Id" required="" autofocus="">
+            </div>
+            <div class="form-group text-center">
+              <label class="text-dark">Or</label>
+            </div>
+            <div class="form-group">
+              <label>Mobile Number:</label>
+              <input type="text" id="mobile" class="form-control " placeholder="Mobile Number" required="" autofocus="">
+            </div>
             
             <button class="btn btn-success btn-block" id="btnlogin" type="button">Login</button>
+</div>
+<di id="OTPVerfy" style="display: none">
+            <div class="form-group">
+              <label>OTP:</label>
+              <input type="text" id="otp" class="form-control " placeholder="OTP" required="" autofocus="">
+            </div>
+            <button class="btn btn-success btn-block" id="btnOTPVerify" type="button">Verify OTP</button>
+</di>
             <hr>
             <!--<p>The OTP is valid for 10 mins.</p>-->
             <p> If you do not get an OTP to login,  please write to <a href="mailto:support@VRSI.in">support@VRSI.in</a> for assistance.</p>
@@ -160,30 +174,6 @@
    $( document ).ready(function() {
 
 
-     $("#btnsendotp").click(function(e)
-     {
-
-      $("#alert-danger").hide();
-      $("#alert-success").hide();
-
-      var mobile = $("#mobile").val();
-      if(mobile)
-      {
-          $("#btnsendotp").html('Please Wait..')
-          $("#btnsendotp").attr('disabled',true);
-          send_otp();
-
-      }
-      else
-      {
-        $("#alert-danger").show();
-        $("#alert-danger").html("Please enter the registration mobile number");
-      }
-
-       
-   
-     })
-
      $("#btnlogin").click(function(e)
      {
 
@@ -191,78 +181,47 @@
       $("#alert-success").hide();
 
       var mobile = $("#mobile").val();
-      var otp = $("#otp").val();
-      if(mobile && otp)
+      var email = $("#email").val();
+      // var otp = $("#otp").val();
+      if(mobile || email)
       {
           $("#btnlogin").html('Please Wait..')
           $("#btnlogin").attr('disabled',true);
-          $("#btnsendotp").attr('disabled',true);
+          // $("#btnsendotp").attr('disabled',true);
+          send_otp();
+      }
+      else
+      {
+        $("#alert-danger").show();
+        $("#alert-danger").html("Please enter the Mobile Number Or Email Id");
+      }
+   
+     })
+
+     $("#btnOTPVerify").click(function(e)
+     {
+
+      $("#alert-danger").hide();
+      $("#alert-success").hide();
+
+      var otp = $("#otp").val();
+      if(otp)
+      {
+          $("#btnOTPVerify").html('Please Wait..')
+          $("#btnOTPVerify").attr('disabled',true);
           verify_otp();
 
       }
       else
       {
         $("#alert-danger").show();
-        $("#alert-danger").html("Please enter the OTP");
+        $("#alert-danger").html("Please enter OTP");
       }
-
-       
    
      })
+
     
 
-
-    function send_otp(){
-      $.ajax({
-            url: baseUrl + '/api/user/send_otp',
-            type: 'POST',
-            dataType: 'json',
-            // async: false,
-            data: {'mobile' : $("#mobile").val()},
-            success: function(d){
-              $("#btnsendotp").html('Send OTP')
-              $("#btnsendotp").attr('disabled',false);
-              if(d.status == "success")
-              {
-                $("#alert-success").show();
-                $("#alert-success").html(d.msg);
-              }
-              else
-              {
-                $("#alert-danger").show();
-                $("#alert-danger").html(d.msg);
-              }
-            }            
-        })
-    }
-  
-
-    function verify_otp(){
-      $.ajax({
-            url: baseUrl + '/api/user/verify_otp',
-            type: 'POST',
-            dataType: 'json',
-            async: false,
-            data: {'mobile' : $("#mobile").val(),'otp':$("#otp").val()},
-            success: function(d){
-              $("#btnlogin").html('Login in')
-              $("#btnlogin").attr('disabled',false);
-              $("#btnsendotp").attr('disabled',false);
-              if(d.status == "success")
-              {
-                $("#alert-success").show();
-                $("#alert-success").html(d.msg);
-
-                location.reload();
-              }
-              else
-              {
-                $("#alert-danger").show();
-                $("#alert-danger").html(d.msg);
-              }
-            }            
-        })
-      }
 
 
         $(".btnrating").on('click',(function(e) {
@@ -342,6 +301,62 @@
    });
 
 
+function send_otp(){
+      $.ajax({
+            url: baseUrl + '/api/user/send_otp',
+            type: 'POST',
+            dataType: 'json',
+            // async: false,
+            data: {'mobile' : $("#mobile").val(),'email':$("#email").val()},
+            success: function(d){
+              $("#btnsendotp").html('Send OTP')
+              $("#btnsendotp").attr('disabled',false);
+              if(d.status == "success")
+              {
+                $("#hdnuserId").val(d.user_id);
+                $("#alert-success").show();
+                $("#alert-success").html(d.msg);
+                $("#OTPVerfy").show();
+                $("#Login").hide();
+              }
+              else
+              {
+                $("#alert-danger").show();
+                $("#alert-danger").html(d.msg);
+                $("#btnlogin").html('Login')
+                $("#btnlogin").attr('disabled',false);
+              }
+            }            
+        })
+    }
+  
+
+    function verify_otp(){
+      $.ajax({
+            url: baseUrl + '/api/user/verify_otp',
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            data: {'user_id' : $("#hdnuserId").val(),'otp':$("#otp").val()},
+            success: function(d){
+              $("#btnlogin").html('Login in')
+              $("#btnlogin").attr('disabled',false);
+              $("#btnsendotp").attr('disabled',false);
+              if(d.status == "success")
+              {
+                $("#alert-success").show();
+                $("#alert-success").html(d.msg);
+
+                location.reload();
+              }
+              else
+              {
+                $("#alert-danger").show();
+                $("#alert-danger").html(d.msg);
+              }
+            }            
+        })
+      }
 
 
 </script>

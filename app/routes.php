@@ -24,6 +24,9 @@ Route::get('/tests', function()
 Route::get('logout','UserController@Logout'); 
 
 
+Route::get('login','UserController@Login'); 
+
+
 
 
 
@@ -31,10 +34,14 @@ Route::get('logout','UserController@Logout');
 Route::get('poll/{img_poll_id?}','PollController@getPoll'); 
 Route::post('poll/{img_poll_id}','PollController@PollSeps'); 
 
-Route::get('/tankyou','PollController@thankyou'); 
+Route::get('/thankyou','PollController@thankyou'); 
 
 
 Route::get('/msg','PollController@msg'); 
+
+
+Route::get('/profile','UserController@getProfile'); 
+Route::post('/profile','UserController@postProfile'); 
 
 
 

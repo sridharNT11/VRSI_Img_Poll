@@ -2462,6 +2462,7 @@ class ComposerStaticInitcffa57d9517b6b5949bf1828d3e34c9f
         'Whoops\\Run' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Run.php',
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'Mandrill' => __DIR__ . '/../..' . '/app/library/Mandrill/Mandrill.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
