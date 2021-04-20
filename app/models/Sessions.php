@@ -23,7 +23,8 @@ class Sessions extends Eloquent {
             // $is_random = Session::get('is_random',null);
             if(isset($session_key) && intval($session_id)>0)
             {   
-                $session = Sessions::where('session_key',$session_key)->where('session_id',$session_id)->frist();
+                $session = Sessions::where('session_key',$session_key)->where('session_id',$session_id)->first();
+             
             }
             else
             {

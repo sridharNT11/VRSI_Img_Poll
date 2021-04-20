@@ -37,7 +37,7 @@
     <div class="row">
       <div class="col-lg-6 col-sm-12 text-center text-md-left "> <img src="{{ asset('images/vrsi_logo.png') }}" alt="Logo" height="100" class="img-fluid"> </div>
       <div class="col-lg-6 col-sm-12 caption text-md-right text-center justify-content-center align-self-center">
-        <h2 class="text-success text-right">POLL ON RETINAL IMAGES</h2>
+        <h2 class="text-success">POLL ON RETINAL IMAGES AND VIDEOS</h2>
       </div>
     </div>
   </div>

@@ -25,8 +25,8 @@ padding-bottom: 10px;">
             <tbody>
               <tr>
                 <td style="font-size: 12px; color: #000000; line-height: 150%; font-family: Open Sans,Tahoma, Geneva, sans-serif;">
-<p style="font-size: 16px; color: #000000; line-height: 24px; text-align: justify; font-family: Open Sans,Tahoma, Geneva, sans-serif;" align="justify">Dear {{ $u->prefix or ''}} {{ $u->full_name or ''}},</p>
-                  <p style="font-size: 16px; color: #000000; line-height: 24px; text-align: justify; font-family: Open Sans,Tahoma, Geneva, sans-serif;" align="justify">{{ $OTPContent }}.
+<p style="font-size: 16px; color: #000000; line-height: 24px; text-align: justify; font-family: Open Sans,Tahoma, Geneva, sans-serif;" align="justify">Dear {{ $u->prefix or 'Dr'}} {{ $u->full_name or ''}},</p>
+                  <p style="font-size: 16px; color: #000000; line-height: 24px; text-align: justify; font-family: Open Sans,Tahoma, Geneva, sans-serif;" align="justify">{{ $OTPContent }}
                  <br />
 
                   </p>.

@@ -103,7 +103,7 @@ class UserController extends BaseController {
                     $datetime = new Datetime;
                     $otp_expired_at = $datetime->modify("+10 minutes"); 
                     $otp_expired_at_text = $otp_expired_at->format('d/m/Y h:i A');
-                    $content  =  $otp." is the OTP for your VRSI Poll Login. This OTP is valid until $otp_expired_at_text.";
+                    $content  =  $otp." is the OTP for your VRSI Poll Login. This OTP is valid until $otp_expired_at_text";
 
 
                     //SMS
@@ -117,7 +117,7 @@ class UserController extends BaseController {
                     {
                         try {
                             $mandrill =  new Mandrill(CustomClass::$Mandrill_Key);
-                            $html = View::make('emails/otp')->with('u',$user)->with('OTPContent',$OTPContent)->render();
+                            $html = View::make('emails/otp')->with('u',$user)->with('OTPContent',$content)->render();
                             $subject = 'OTP from VRSI Poll Login, valid until '.$otp_expired_at_text;
                             $message = array(
                                         'html' => $html,
@@ -248,6 +248,17 @@ class UserController extends BaseController {
                 {
                     if($datetime <= $user->otp_expired_at)
                     {   
+                        
+                        $session = Sessions::getSession();
+            			if(isset($session))
+            			{
+            			    $userlog = new UserLog();
+                            $userlog->user_id = $user_id;
+                            $userlog->session_id = $session->session_id;
+                            $userlog->save();
+            			}
+                        
+                        
                     	Auth::login($user);
                         $status= "success";
                         $msg   = "";
@@ -321,8 +332,8 @@ class UserController extends BaseController {
                 'prefix'         => 'required',
                 'full_name'         => 'required',
                 // 'mobile'       => 'required|alphaNum|max:15',
-                'mobile'       => 'required|alphaNum|max:15|unique:image_poll_users,mobile,'.$user->user_id.',user_id',
-                'email'        => 'required|email|unique:image_poll_users,email,'.$user->user_id.',user_id',
+                'mobile'       => 'required|alphaNum|max:15|unique:image_poll_users,mobile,'.$user->user_id.',user_id,profile_updated_at,NOT_NULL',
+                'email'        => 'required|email|unique:image_poll_users,email,'.$user->user_id.',user_id,profile_updated_at,NOT_NULL',
                 'city'         => 'required',   
                 'state'        => 'required',
                 'affiliation'  => 'required',
@@ -351,6 +362,11 @@ class UserController extends BaseController {
                     $user->profile_updated_at = date('Y-m-d H:i:s');
                     $user->save();
 
+
+                    //delete incompleted duplicate email and mobile
+                    User::where('email',$user->email)->whereNull('profile_updated_at')->delete();
+                    User::where('mobile',$user->mobile)->whereNull('profile_updated_at')->delete();
+                    
                     return Redirect::to('/');
                 }
             }

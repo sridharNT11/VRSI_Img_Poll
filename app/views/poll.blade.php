@@ -18,13 +18,27 @@
         <h4 class="mb-3 d-inline">{{ $image_poll->title }}</h4>
       </div>
       @if(isset($image_poll->image_url))
-      <div class="row">
-         <div class="col-12 text-center">
-          <div class="w-100 bg-black">
-            <img src="{{$image_poll->image_url }}" class="img-fluid mt-3 mb-3" style="/*height: 300px*/" alt=""> 
+          @if($image_poll->media_type == "Image")
+          <div class="row">
+             <div class="col-12 text-center">
+              <div class="w-100 bg-black">
+                <img src="{{$image_poll->image_url }}" class="img-fluid mt-3 mb-3" style="/*height: 300px*/" alt=""> 
+              </div>
+             </div>
           </div>
-         </div>
-      </div>
+          @endif
+          @if($image_poll->media_type == "Video")
+          <div class="row">
+             <div class="col-12 text-center">
+              <div class="w-100 bg-black">
+                <video width="100%"  controls autoplay>
+                  <source src="{{$image_poll->image_url }}" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+              </div>
+             </div>
+          </div>
+          @endif
       @endif
       <div class="row">
          <div class="col-12 pt-2">

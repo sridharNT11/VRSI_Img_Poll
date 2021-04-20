@@ -19,6 +19,15 @@ class PollController extends BaseController {
 	public function index($session_id= null,$session_key=null)
 	{
 	    
+	    if(Auth::check())
+		{
+			$user = User::find(Auth::User()->user_id);
+			if($user->profile_updated_at==null)
+			{
+				return Redirect::to('profile');
+			}
+		}
+	    
 	    if(isset($session_key))
 	    {
 	        Session::put('session_key', $session_key);
@@ -172,7 +181,7 @@ class PollController extends BaseController {
 				}
 				else
 				{
-					$image_poll=ImagePoll::orderBy('order_no')->where('session_id',$session->session_id)->where('order_no','<',$pre_order_no)
+					$image_poll=ImagePoll::orderBy('order_no', 'DESC')->where('session_id',$session->session_id)->where('order_no','<',$pre_order_no)
 							->first();		
 					
 				}	
